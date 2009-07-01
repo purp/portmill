@@ -43,7 +43,7 @@ describe BuildsController do
     it "POST create" do
       put :create, :post => { :body => nil }
       response.should be_success
-      response.headers["Content-Type"].should match(/^application\/json/)
+      response.headers[content_type_header].should match(/^application\/json/)
       response.body.should == @build_json
     end
   end
@@ -68,8 +68,8 @@ describe BuildsController do
     it "create response with proper content type" do
       get :feed
       response.should be_success
-      response.headers["Content-type"].should_not be_nil
-      response.headers["Content-type"].should match(/application\/rss\+xml/)
+      response.headers[content_type_header].should_not be_nil
+      response.headers[content_type_header].should match(/application\/rss\+xml/)
       assigns[:builds].should_not be_nil
     end
   end
