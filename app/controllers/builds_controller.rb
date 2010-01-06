@@ -3,11 +3,11 @@ class BuildsController < ApplicationController
   protect_from_forgery :only => [:update, :destroy]   
   
   def index
-    @builds = Build.paginate(params[:page] || 1, 10, :order => :time, :class => nil, :descending => true)
+    @builds = Build.paginate(:page => params[:page] || 1, :per_page => 10, :order => 'time DESC')
   end
 
   def feed
-    @builds = Build.paginate(1, 10, :order => :time, :class => nil, :descending => true)
+    @builds = Build.paginate(:page => 1, :per_page => 10, :order => 'time DESC')
     response.content_type = "application/rss+xml"
     render :action => "feed", :layout => false
   end

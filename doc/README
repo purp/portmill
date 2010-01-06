@@ -1,0 +1,6 @@
+This is a postgresql-based Rails app. If you don't know what that means, run now. Otherwise:
+
+sudo port install postgresql83 postgresql83-server
+sudo gem install ruby-pg will_paginate
+
+
