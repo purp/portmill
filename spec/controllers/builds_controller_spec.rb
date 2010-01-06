@@ -62,7 +62,7 @@ describe BuildsController do
       10.times do
         builds << mock_build
       end
-      Build.should_receive(:paginate).with(1,10,an_instance_of(Hash)).and_return(builds)
+      Build.should_receive(:paginate).with(an_instance_of(Hash)).and_return(builds)
     end
 
     it "create response with proper content type" do
